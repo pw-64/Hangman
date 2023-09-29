@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hangman</title>
+        <link href="styles.css" type="text/css" rel="stylesheet">
+        <script src="jquery.js"></script>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <h1>Hangman</h1>
+        <div id="game">
+            <svg id="drawing">
+                <!-- Structure -->
+                <line class="hidden" x1="0" x2="300" y1="220" y2="220" stroke="black" stroke-width="2"></line>
+                <line class="hidden" x1="120" x2="150" y1="220" y2="190" stroke="black" stroke-width="2"></line>
+                <line class="hidden" x1="150" x2="180" y1="190" y2="220" stroke="black" stroke-width="2"></line>
+                <line class="hidden" x1="150" x2="150" y1="0" y2="220" stroke="black" stroke-width="2"></line>
+                <line class="hidden" x1="150" x2="180" y1="30" y2="0" stroke="black" stroke-width="2"></line>
+                <line class="hidden" x1="150" x2="250" y1="1" y2="1" stroke="black" stroke-width="2"></line>
+                <line class="hidden" x1="250" x2="250" y1="1" y2="40" stroke="black" stroke-width="2" stroke-dasharray="3 3"></line>
+                <!-- Person -->
+                <circle class="hidden" cx="250" cy="50" r="10" stroke="black" stroke-width="2" fill="none"></circle>
+                <line class="hidden" x1="250" x2="250" y1="60" y2="100" stroke="black" stroke-width="2"></line>
+                <line class="hidden" x1="250" x2="265" y1="70" y2="80" stroke="black" stroke-width="2"></line>
+                <line class="hidden" x1="235" x2="250" y1="80" y2="70" stroke="black" stroke-width="2"></line>
+                <line class="hidden" x1="250" x2="265" y1="100" y2="115" stroke="black" stroke-width="2"></line>
+                <line class="hidden" x1="235" x2="250" y1="115" y2="100" stroke="black" stroke-width="2"></line>
+                <!-- Eye Crosses -->
+                <line class="hidden" x1="245" x2="249" y1="46" y2="50" stroke="red" stroke-width="1"></line>
+                <line class="hidden" x1="245" x2="249" y1="50" y2="46" stroke="red" stroke-width="1"></line>
+                <line class="hidden" x1="251" x2="255" y1="46" y2="50" stroke="red" stroke-width="1"></line>
+                <line class="hidden" x1="251" x2="255" y1="50" y2="46" stroke="red" stroke-width="1"></line>
+            </svg>
+            <span id="incorrect"></span>
+            <div id="words"></div>
+            <label id="guess">Guess: <input id="guess_input"></label>
+            <h4 id="game-over" style="color: crimson">Game Over</h4>
+            <h4 id="game-won" style="color: limegreen">You Win!</h4>
+        </div>
+    </body>
+</html>
