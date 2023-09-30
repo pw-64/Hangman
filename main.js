@@ -10,14 +10,30 @@ $(document).ready(() => {
         GenerateWords();
         GenerateDrawing();
     };
-    $("#game-over").hide();
-    $("#game-won").hide();
-    GenerateWords();
-    GenerateDrawing();
+    $("#game, #game-over, #game-won").hide();
 });
 
-const words = ["Hello", "World"];
+let words;
 let guessed_letters = [];
+
+function Start() {
+    words = $("#words-to-guess").val().split(" ");
+    if (words[0].replaceAll(" ", "").length > 0) {
+        $("#start").hide();
+        $("#game").show();
+        GenerateWords();
+        GenerateDrawing();
+    }
+}
+
+function RandomWords() {
+    const count = Math.floor(Math.random() * 4) + 1;
+    const w2g = $("#words-to-guess")[0];
+    fetch("https://random-word-api.herokuapp.com/word?number=" + count)
+        .then(r => r.json())
+        .then(json => w2g.value = json.toString().replaceAll(",", " "))
+        .then(Start);
+}
 
 function GetWordsString() {return words.reduce((sum, current) => {return sum += current;}).toLowerCase();}
 
@@ -26,11 +42,9 @@ function GenerateDrawing() {
     const drawing_elements = $("#drawing > *");
     drawing_elements.addClass("hidden");
     let i = 0;
-    // let correct_guessed_letters = new Set;
     let incorrect_guessed_letters = new Set;
     guessed_letters.forEach(letter => {
-        if (words_string.includes(letter)) {/*correct_guessed_letters.add(letter);*/}
-        else {
+        if (!words_string.includes(letter)) {
             incorrect_guessed_letters.add(letter);
             drawing_elements.eq(i++).removeClass("hidden");
         }
